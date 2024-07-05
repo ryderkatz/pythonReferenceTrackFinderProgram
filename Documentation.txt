@@ -1,0 +1,42 @@
+Ryder Katz
+July 5, 2024
+
+This program was created as a way to find reference tracks for audio mixing that had similar characteristics (mainly key and tempo) 
+to the song being mixed.  I figured that since different keys have different frequencies that may be more present than songs set in 
+different keys, and since different tempos may affect the dynamics of the song, it might be beneficial for the audio mixing process
+to have a reference track that is similar to the track being mixed in terms of key and tempo.  I also have included the average 
+loudness, energy, danceability, and valence of each song; I figured those variables might also be helpful at the discretion of the
+user when making the decision of which reference track(s) to use.  
+
+For context, I am a computer science student at Saint Louis University who recently completed the second semester of my freshman
+year.  I also am very passionate about making music, and acknowledge the importance of reference tracks when mixing and mastering
+songs.  I decided to start this project while enrolled in the Intro To Object Oriented Programming course at my university.  We 
+used python in the course, so I decided to use python to code this project due to my familiarity with it.  
+
+I wrote two python programs to accomplish the goals of my project.  
+
+The first program, titled 'reference track data loader', makes use of the Spotify API to load reference track data into the file
+titled 'Reference Song Data.txt'.  The program requires the spotipy module, as well as a spotify developer client ID and client
+secret.  The 'filePath' must be adjusted to point to wherever the file is located on the user's system.  To use the program, 
+simply adjust the 'playlistID' variable to a string value of the Spotify URI corresponding to a playlist from which the user wants
+to gather Spotify track data from.  This program can be run as many times as needed, to add as many songs as desired to the file
+containing the data.  The program will grab the track features for each song, and will check for repeats before adding all of the
+new songs and their data to the 'Reference Song Data.txt' file.  Each element of the data in the file is separated by 2 commas, in
+case a song has a comma in it.  If a song were to theoretically have 2 or more commas in its title, this could cause issues with 
+the program, however, I am unaware of any major song where this is the case, although it is possible that an exception exists
+somewhere out there.  
+
+The second program, titled 'reference track finder application', is the mainly used program which uses the data loaded into the
+file from the previous program to find songs that match the desired reference characteristics that are specified by the user.  
+This program requires tkinter, PIL, os, and time to be installed. The 'filePath' must be adjusted to point to wherever the file is
+located on the user's system, and the 'oschdir' must also be adjusted to point to wherever the folder containing the image is
+located on the user's system.  This program reads the data stored in the 'Reference Song Data.txt' file and organizes the data as
+specified.  The program uses tkinter to create a graphical user interface that prompts the user to enter certain characteristics 
+that they want in a reference track, and it then narrows down the set of tracks that fit these specifications.  It eventually
+displays tracks that match the user's criteria in a tkinter treeview widget, and also allows the user to run the program again if
+desired.  
+
+The 'Reference Song Data.txt' file included in the project has already been loaded with the data corresponding to the 50 tracks
+on the Spotify "Today's Top Hits" playlist as of July 5, 2024.  This would allow a user to run the second program (using the data
+from these 50 tracks), without needing a Spotify developer client ID and client secret, in order to test out the program and decide
+whether or not to sign up for the client ID & secret via Spotify for Developers, if so desired.  
